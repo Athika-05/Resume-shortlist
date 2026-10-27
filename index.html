@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Shortlisting System</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>AI Resume Shortlisting System</h1>
+
+        <p>
+            Upload a resume and compare it with
+            the job requirements.
+        </p>
+
+        <form action="/shortlist"
+              method="POST"
+              enctype="multipart/form-data">
+
+            <label>Job Description</label>
+
+            <textarea
+                name="job_description"
+                placeholder="Enter required skills, qualifications and job responsibilities"
+                required></textarea>
+
+            <label>Upload Resume (PDF)</label>
+
+            <input
+                type="file"
+                name="resume"
+                accept=".pdf,application/pdf"
+                required>
+
+            <button type="submit">
+                Analyze Resume
+            </button>
+
+        </form>
+
+        <a href="/candidates" class="link">
+            View Previous Results
+        </a>
+
+    </div>
+
+</body>
+</html>

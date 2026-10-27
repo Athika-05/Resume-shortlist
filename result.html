@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Resume Analysis Results</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Resume Analysis Results</h1>
+
+        {% if records is defined %}
+
+            {% if records %}
+
+                <table>
+                    <tr>
+                        <th>Candidate Resume</th>
+                        <th>Matching Score</th>
+                        <th>Status</th>
+                    </tr>
+
+                    {% for candidate in records %}
+
+                    <tr>
+                        <td>{{ candidate["filename"] }}</td>
+
+                        <td>{{ candidate["score"] }}%</td>
+
+                        <td>{{ candidate["status"] }}</td>
+                    </tr>
+
+                    {% endfor %}
+
+                </table>
+
+            {% else %}
+
+                <p>No previous results available.</p>
+
+            {% endif %}
+
+        {% else %}
+
+            <h3>Resume: {{ filename }}</h3>
+
+            <div class="score">
+                {{ score }}%
+            </div>
+
+            <p>Text Similarity Score</p>
+
+            <h2>{{ status }}</h2>
+
+            <p>
+                Review the resume manually before making
+                any recruitment decision.
+            </p>
+
+        {% endif %}
+
+        <a href="/" class="link">
+            Analyze Another Resume
+        </a>
+
+    </div>
+
+</body>
+</html>
